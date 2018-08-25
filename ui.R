@@ -1,20 +1,14 @@
-
- 
-
-# Define UI for application that draws a histogram
+# Define UI for application that shows a table of sport activities
 shinyUI(fluidPage(
-  
   # Application title
-  titlePanel("Gerjan's activities"),
-  
-  # Sidebar with a slider input for number of bins 
-  sidebarLayout(
-    
-    checkboxGroupInput("act-type", "Activities to show:",
-                       levels(df1$Activiteittype)[c(1,2,3,4,7)]),
-    # Show a plot of the generated distribution
+  titlePanel("Gerjan's Sport activities"),
+  # Sidebar with checkboxes to choose an activity 
+  sidebarPanel(uiOutput("SelectActivity"),
+    # Show a table of the choosen activities
     mainPanel(
       textOutput("text1"),
+      #show a plot of the activity
+      plotOutput("ActPlot",width = "300%"),
       tableOutput("data")
     )
   )
